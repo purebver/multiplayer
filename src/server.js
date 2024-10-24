@@ -1,11 +1,6 @@
 import net from 'net';
-import dotenv from 'dotenv';
 import { onConnection } from './socket/onConnection.js';
-
-dotenv.config();
-
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+import { HOST, PORT } from './constants/env.js';
 
 const server = net.createServer(onConnection);
 
