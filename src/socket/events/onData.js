@@ -1,5 +1,6 @@
 import { config } from '../../config/config.js';
 import { PACKET_TYPE } from '../../constants/header.js';
+import { getHandlerById } from '../../handlers/index.js';
 import { errorHandler } from '../../utils/error/errorHandler.js';
 import { packetParser } from '../../utils/parser/packetParser.js';
 
@@ -32,8 +33,11 @@ export const onData = (socket) => (data) => {
           case PACKET_TYPE.PING:
             break;
           case PACKET_TYPE.NORMAL: {
-            const { handlerId, userId, version, payload } = packetParser(packet);
-            // console.log('패킷파싱:-----------------------', handlerId, userId, version, payload);
+            const { handlerId, userId, payload } = packetParser(packet);
+            // console.log('패킷파싱:-----------------------', handlerId, userId, payload);
+            const handler = getHandlerById(handlerId);
+
+            handler(socket, userId, payload);
           }
         }
       } catch (e) {

@@ -13,6 +13,7 @@ export const packetParser = (data) => {
   try {
     packet = Packet.decode(data);
   } catch (e) {
+    console.error(e);
     throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, '패킷 디코드 에러');
   }
 
@@ -40,6 +41,7 @@ export const packetParser = (data) => {
   try {
     payload = payloadType.decode(packet.payload);
   } catch (e) {
+    console.error(e);
     throw new CustomError(ErrorCodes.PACKET_DECODE_ERROR, '패킷 디코드 에러');
   }
 
@@ -70,5 +72,5 @@ export const packetParser = (data) => {
 
   // console.log('------------------------------------------', handlerId, userId, version, payload);
 
-  return { handlerId, userId, version, payload };
+  return { handlerId, userId, payload };
 };
