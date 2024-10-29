@@ -14,4 +14,7 @@ export const packetNames = {
   response: {
     Response: 'response.Response',
   },
+  lastPosition: {
+    LastPosition: 'lastPosition.LastPosition',
+  },
 };

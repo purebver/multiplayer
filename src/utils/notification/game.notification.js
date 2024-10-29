@@ -1,5 +1,6 @@
 import { config } from '../../config/config.js';
 import { PACKET_TYPE } from '../../constants/header.js';
+import { RESPONSE_CODE } from '../../constants/responseCode.js';
 import { getProtoMessages } from '../../init/loadProto.js';
 
 const serializer = (message, type) => {

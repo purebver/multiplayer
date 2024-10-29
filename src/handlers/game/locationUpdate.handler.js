@@ -6,6 +6,7 @@ import { errorHandler } from '../../utils/error/errorHandler.js';
 const locationUpdateHandler = (socket, userId, payload) => {
   try {
     const { x, y } = payload;
+    console.log(`--------------------굿독`, x, y);
     const gameSession = getGameSession();
 
     if (!gameSession) {

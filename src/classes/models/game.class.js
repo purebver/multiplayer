@@ -14,6 +14,10 @@ class Game {
     return this.users.find((user) => user.id === userId);
   }
 
+  getUserSocket(socket) {
+    return this.users.find((user) => user.socket === socket);
+  }
+
   removeUser(socket) {
     const index = this.users.findIndex((user) => user.socket === socket);
     if (index !== -1) {
@@ -25,7 +29,7 @@ class Game {
     const locationData = this.users
       .filter((user) => user.id !== userId)
       .map((user) => {
-        return { id: user.id, payload: user.payload, x: user.x, y: user.y };
+        return { id: user.id, playerId: user.playerId, x: user.x, y: user.y };
       });
 
     return createLocationPacket(locationData);
