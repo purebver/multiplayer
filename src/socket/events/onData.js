@@ -1,6 +1,5 @@
 import { config } from '../../config/config.js';
 import { PACKET_TYPE } from '../../constants/header.js';
-import pingpongHandler from '../../handlers/game/pingpong.js';
 import { getHandlerById } from '../../handlers/index.js';
 import { errorHandler } from '../../utils/error/errorHandler.js';
 import { packetParser } from '../../utils/parser/packetParser.js';
