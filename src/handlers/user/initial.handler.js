@@ -19,6 +19,8 @@ const initialHandler = async (socket, userId, payload) => {
       userData = await findUserByDeviceId(deviceId);
     }
 
+    console.log(latency);
+
     const user = addUser(socket, deviceId, playerId, latency, userData.last_x, userData.last_y);
 
     const gameSession = getGameSession();

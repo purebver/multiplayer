@@ -2,12 +2,17 @@ import { HANDLER_IDS } from '../constants/handlerIds.js';
 import CustomError from '../utils/error/customError.js';
 import { ErrorCodes } from '../utils/error/errorCodes.js';
 import locationUpdateHandler from './game/locationUpdate.handler.js';
+import pingpongHandler from './game/pingpong.js';
 import initialHandler from './user/initial.handler.js';
 
 const handlers = {
   [HANDLER_IDS.INITIAL]: {
     handler: initialHandler,
     protoType: 'initialPayload.InitialPayload',
+  },
+  [HANDLER_IDS.PING]: {
+    handler: pingpongHandler,
+    protoType: 'common.Ping',
   },
   [HANDLER_IDS.LOCATION_UPDATE]: {
     handler: locationUpdateHandler,
