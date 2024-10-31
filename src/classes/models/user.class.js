@@ -41,7 +41,7 @@ class User {
         y: this.y,
       };
     }
-    console.log(this.lastUpdateTime, latency);
+    // console.log(this.lastUpdateTime, latency);
     const timeDiff = Math.floor((Date.now() - this.lastUpdateTime + latency) / 1000);
     const distance = this.speed * timeDiff;
 

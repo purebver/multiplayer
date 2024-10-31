@@ -6,14 +6,11 @@ import { errorHandler } from '../../utils/error/errorHandler.js';
 const locationUpdateHandler = (socket, userId, payload) => {
   try {
     const { x, y } = payload;
-    // console.log(`--------------------굿독`, x, y);
     const gameSession = getGameSession();
 
     if (!gameSession) {
       throw new CustomError(ErrorCodes.GAME_NOT_FOUND, '게임을 찾지 못했습니다.');
     }
-
-    // console.log(gameSession);
 
     const user = gameSession.getUser(userId);
     if (!user) {

@@ -5,6 +5,8 @@ import pools from '../database.js';
 import CustomError from '../../utils/error/customError.js';
 import { ErrorCodes } from '../../utils/error/errorCodes.js';
 
+//테이블 생성용 파일
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -25,7 +27,7 @@ const createSchemas = async () => {
   try {
     await executeSqlFile(pools.USER_DB, path.join(sqlDir, 'user_db.sql'));
   } catch (e) {
-    throw CustomError(
+    throw new CustomError(
       ErrorCodes.DB_MIGRATION_ERROR,
       `데이터베이스 테이블 생성 중 오류가 발생했습니다 ${e}`,
     );
