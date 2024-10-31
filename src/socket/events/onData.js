@@ -29,6 +29,8 @@ export const onData = (socket) => (data) => {
 
       // console.log(`패킷 길이: ${length}, 패킷 타입: ${packetType}`);
       // console.log(`패킷: `, packet);
+
+      // 있는거 활용 하려다 보니 의미 없는 모양의 switch
       try {
         switch (packetType) {
           case PACKET_TYPE.PING:

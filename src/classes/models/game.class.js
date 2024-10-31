@@ -36,7 +36,6 @@ class Game {
   getMaxLatency() {
     let maxLatency = 0;
     this.users.forEach((user) => {
-      console.log('user.latency-------------------', user.id, user.latency);
       maxLatency = Math.max(maxLatency, user.latency);
     });
 
@@ -52,7 +51,7 @@ class Game {
         return { id: user.id, playerId: user.playerId, x, y };
       });
 
-    console.log(locationData);
+    // console.log(locationData);
 
     return createLocationPacket(locationData);
   }
