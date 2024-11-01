@@ -20,6 +20,7 @@ const handlers = {
   },
 };
 
+//handlers에서 handler에 등록된 함수 호출
 export const getHandlerById = (handlerId) => {
   if (!handlers[handlerId]) {
     throw new CustomError(
@@ -30,6 +31,7 @@ export const getHandlerById = (handlerId) => {
   return handlers[handlerId].handler;
 };
 
+//handlers에서 protoType호출
 export const getProtoTypeNameByHandlerId = (handlerId) => {
   if (!handlers[handlerId]) {
     throw new CustomError(

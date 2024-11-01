@@ -5,6 +5,7 @@ import CustomError from '../../utils/error/customError.js';
 import { errorHandler } from '../../utils/error/errorHandler.js';
 
 export const onError = (socket) => (e) => {
+  // 게임세션에서 유저를 찾아 유저를 제거
   const gameSession = getGameSession();
   const user = gameSession.getUserSocket(socket);
   updateUser(user.x, user.y, user.id);

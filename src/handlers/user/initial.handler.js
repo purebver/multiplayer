@@ -9,9 +9,9 @@ import { createResponse } from '../../utils/response/createResponse.js';
 
 const initialHandler = async (socket, userId, payload) => {
   try {
-    console.log(payload);
     const { deviceId, playerId, latency } = payload;
 
+    //유저의 deviceId가 db에 있는지 확인 없으면 생성후 추가
     let userData = await findUserByDeviceId(deviceId);
 
     if (!userData) {
@@ -19,13 +19,13 @@ const initialHandler = async (socket, userId, payload) => {
       userData = await findUserByDeviceId(deviceId);
     }
 
-    console.log(latency);
-
     const user = addUser(socket, deviceId, playerId, latency, userData.last_x, userData.last_y);
 
+    //게임세션에 유저 추가
     const gameSession = getGameSession();
     gameSession.addUser(user);
 
+    //클라이언트에 초기 좌표를 전달
     const initialResponse = createResponse(HANDLER_IDS.INITIAL, RESPONSE_CODE.SUCCESS, {
       userId: deviceId,
       x: userData.last_x,
