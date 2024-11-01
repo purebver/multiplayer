@@ -2,6 +2,7 @@ import { config } from '../../config/config.js';
 import { PACKET_TYPE } from '../../constants/header.js';
 import { getProtoMessages } from '../../init/loadProto.js';
 
+// 해더 붙이기
 const serializer = (message, type) => {
   const packetLength = Buffer.alloc(config.packet.totalLength);
   packetLength.writeUInt32BE(
@@ -14,6 +15,7 @@ const serializer = (message, type) => {
   return Buffer.concat([packetLength, packetType, message]);
 };
 
+// 화면에 다른유저를 보여줄 패킷 작성
 export const createLocationPacket = (users) => {
   const protoMessages = getProtoMessages();
   const location = protoMessages.locationUpdate.LocationUpdate;
@@ -24,6 +26,7 @@ export const createLocationPacket = (users) => {
   return serializer(locationPacket, PACKET_TYPE.LOCATION);
 };
 
+// 핑 패킷
 export const createPingPacket = (timestamp) => {
   const protoMessages = getProtoMessages();
   const ping = protoMessages.common.Ping;
